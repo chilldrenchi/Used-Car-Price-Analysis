@@ -87,8 +87,14 @@ Evaluating the final workflow yields several invaluable optimization strategies 
    ```bash
    git clone [https://github.com/chilldrenchi/Used-Car-Price-Analysis.git](https://github.com/chilldrenchi/Used-Car-Price-Analysis.git)
 
-2. Open PAC Model.R in your R development console (e.g., RStudio) & Download the data named verison1. 
+2. Dataset Acquisition: Due to GitHub storage optimization guidelines for large files, the raw statistics are hosted externally. Please download analysisData.csv and scoringData.csv from [This Google Drive Link.](https://drive.google.com/drive/folders/1_Gk9i3YeWa1JeCWeFEMhDPKV2p7nbKgj?usp=sharing)
 
-3. Path Modification Note: The script references static absolute local file directories (e.g., /Users/skychi/Desktop/...). Please change the file system locations inside the read.csv() blocks to map to your specific local folder directories housing the analysisData and scoringData sets.
+   * 📘 analysisData.csv (Training & Validation Set): This serves as the "textbook" and "mock exam" for our models. It contains all vehicle characteristics along with the actual target variable, price. The script splits this data (80/20) to allow algorithms (XGBoost, Random Forest, etc.) to discover statistical patterns and rigorously evaluate their baseline RMSE performance.
 
-4. Install all missing dependent libraries and source the file to run data cleaning routines, execute tests, and output valuation sets.
+   * 📭 scoringData.csv (Testing & Scoring Set): This serves as the final "blind test" or "real-world deployment scenario". It contains identical vehicle configurations but completely omits the price column. Once the optimal XGBoost architecture is locked in and verified against overfitting, it is applied here to predict unknown resale valuations for final submission.
+
+3. Open PAC Model.R in your R development console (e.g., RStudio).
+
+4. Path Modification Note: The script references static absolute local file directories (e.g., /Users/skychi/Desktop/...). Please change the file system locations inside the read.csv() blocks to map to your specific local folder directories housing the analysisData and scoringData sets.
+
+5. Install all missing dependent libraries and source the file to run data cleaning routines, execute tests, and output valuation sets.
